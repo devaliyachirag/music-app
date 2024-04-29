@@ -1,0 +1,71 @@
+img {
+    background-position: center;
+    min-height: 80px;
+}
+
+.page {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    height: 100vh;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+    color: white;
+}
+
+.page::after {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(30px);
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+
+.page-img {
+    height: 400px;
+    width: 400px;
+    border-radius: 50%;
+    display: block;
+    border: 10px solid rgb(150, 215, 253);
+}
+
+
+.card2 {
+    position: fixed;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 9999;
+    margin-left: 20px;
+    margin-right: 20px;
+    /* background: rgba(255, 255, 255, 0.25); */
+    /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
+    /* backdrop-filter: blur(3px);   */
+    /* -webkit-backdrop-filter: blur(3px); */
+    /* border-radius: 10px; */
+    /* border: 1px solid rgba(255, 255, 255, 0.18); */
+}
+
+p {
+    margin: 0 !important;
+}
+
+.SkipNextIcon,
+.SkipPreviousIcon,
+.PlayArrowIcon,
+.PauseIcon,
+.CloudDownloadIcon:hover {
+    color: black;
+}
+input{
+    accent-color: rgb(150, 215, 253)!important;
+}
