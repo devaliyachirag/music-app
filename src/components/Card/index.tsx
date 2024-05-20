@@ -10,11 +10,7 @@ import VolumeUp from "@mui/icons-material/VolumeUp";
 import Stack from "@mui/material/Stack";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import { hover } from "@testing-library/user-event/dist/hover";
-interface Music {
-  url: string;
-  image: string;
-  caption: string;
-}
+
 
 const Card = () => {
   const [time, setTime] = useState<any>(0);
@@ -44,7 +40,7 @@ const Card = () => {
     }
   };
   const updateSlider = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const seekTime = parseFloat(event.target.value);
+    var seekTime = parseFloat(event.target.value);
     if (audioRef.current) {
       audioRef.current.currentTime = seekTime;
       setTime(seekTime);
@@ -103,8 +99,7 @@ const Card = () => {
             src={context?.list[context?.index].url}
             ref={audioRef}
             onTimeUpdate={timeUpdate}
-          ></audio>
-
+          />
           <div className="d-flex justify-content-between">
             <p>
               {audioRef.current
@@ -127,14 +122,14 @@ const Card = () => {
             </p>
           </div>
         </div>
-        <div className="col-12 d-flex justify-content-between">
+        <div className="col-lg-12 d-flex justify-content-between">
           <SkipPreviousIcon
             style={{ fontSize: "50px" }}
             onClick={() => previousSong()}
           />
 
           <div onClick={() => playSong()}>
-            {context?.mode ? (
+            {context?.mode || time == audioRef.current?.duration ? (
               <PlayArrowIcon
                 style={{ fontSize: "50px" }}
                 onClick={() => context?.setMode(false)}
@@ -151,7 +146,7 @@ const Card = () => {
             onClick={() => nextSong()}
           />
         </div>
-        <div className="col-12 d-flex justify-content-between">
+        <div className="col-lg-12 d-flex justify-content-between">
           <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
             <VolumeDown />
             <input
@@ -167,7 +162,7 @@ const Card = () => {
           <CloudDownloadIcon
             style={{ fontSize: "40px" }}
             onClick={handleDownload}
-          ></CloudDownloadIcon>
+          />
         </div>
       </div>
     </div>

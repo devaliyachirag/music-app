@@ -6,14 +6,14 @@ interface Music {
   url: string;
   image: string;
   caption: string;
-  artist?:string
+  artist?: string;
 }
 interface MusicContext {
   list: Music[];
   index: number;
   setIndex: (i: number) => void;
   mode: boolean;
-  setMode: (m:boolean) => void;
+  setMode: (m: boolean) => void;
 }
 interface MusicChildren {
   children: ReactNode;
@@ -92,7 +92,7 @@ const MusicList: FC<MusicChildren> = ({ children }) => {
   //     caption: "le gayi le gayi",
   //   },
   // ];
-  const list : Music[] = [
+  const list: Music[] = [
     {
       caption: "Lunar Cycles",
       image:
@@ -191,8 +191,7 @@ const MusicList: FC<MusicChildren> = ({ children }) => {
       artist: "Aso, Middle School, Aviino",
       url: "https://mp3.chillhop.com/serve.php/?mp3=10075",
     },
-    //ADD MORE HERE
-  ]
+  ];
   const [mode, setMode] = useState<boolean>(true);
   const [index, setIndex] = useState(0);
   const contextValue = {

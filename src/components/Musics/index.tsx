@@ -8,17 +8,46 @@ interface Music {
   caption: string;
 }
 const Musics = () => {
-  const context = useContext(List);
+  const context: any = useContext(List);
+  const [query, setQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
   const selectSong = (ind: number) => {
     context?.setIndex(ind);
     context?.setMode(true);
   };
 
+  const filteredList: Music[] = query
+    ? context?.list.filter((item: any) =>
+        item.caption.toLowerCase().includes(query.toLowerCase())
+      )
+    : context?.list;
+  console.log(filteredList);
   return (
     <>
       <div className="box">
-        <h1 className="text-center m-3 text-shadow">Playlist</h1>
-        {context?.list.map((value, index) => {
+        <div
+         className="sticky"
+        >
+          <h1 className="text-center m-3 text-shadow">Playlist</h1>
+          <div className="contenir" style={{ position: "sticky", top: "0%" }}>
+            <input
+              type="text"
+              className="search col-11"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Search..."
+            />
+
+            <button
+              className="search-btn"
+              id="search-inp-btn"
+              onClick={() => filteredList}
+            >
+              &#x027A4;
+            </button>
+          </div>
+        </div>
+        {filteredList?.map((value: any, index: number) => {
           return (
             <div key={index}>
               <section
